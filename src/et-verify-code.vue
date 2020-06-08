@@ -1,19 +1,20 @@
 <template>
   <div class="flex">
     <template v-for="n in len">
-      <el-input :key="'codeInput' + n" :ref="'codeInput' + n" class="mr-6 text-center" style="width: 40px;" v-model.trim.number="code[n-1]" @keydown.native="onkeydown(n)" @keyup.native="onkeyup(n)"></el-input>
+      <input :key="'codeInput' + n" :ref="'codeInput' + n" class="mr-6 text-center" style="width: 40px;" v-model.trim.number="code[n-1]" @keydown.native="onkeydown(n)" @keyup.native="onkeyup(n)" />
     </template>
     <div class="flex-1"></div>
-    <el-link type="primary" @click="sendCode" class="sendCodeBtn font-normal" :underline="false">Resend Email</el-link>
+    <button type="primary" @click="sendCode" class="sendCodeBtn font-normal" :underline="false">Resend Email</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SendVerifyCode',
+  name: 'et-verify-code',
+  props: ["length"],
   data () {
     return {
-      len: 4, // 验证码长度
+      len: this.length || 4, // 验证码长度
       code: new Array(this.len),
       keyCodes: [
         48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, // 数字

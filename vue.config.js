@@ -11,7 +11,7 @@ module.exports = {
       filename: 'et-verify-code.min.js',
       library: 'et-verify-code',
       libraryTarget: 'umd',
-      umdNameDefine: true
+      umdNamedDefine: true
     }
   }
 }
