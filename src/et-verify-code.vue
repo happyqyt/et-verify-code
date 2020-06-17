@@ -1,16 +1,12 @@
 <template>
-  <div class="flex">
-    <template v-for="n in len">
-      <input :key="'codeInput' + n" :ref="'codeInput' + n" class="mr-6 text-center" style="width: 40px;" v-model.trim.number="code[n-1]" @keydown.native="onkeydown(n)" @keyup.native="onkeyup(n)" />
-    </template>
-    <div class="flex-1"></div>
-    <button type="primary" @click="sendCode" class="sendCodeBtn font-normal" :underline="false">Resend Email</button>
+  <div class="vcWrap">
+    <input v-for="n in len" :key="'codeInput' + n" :ref="'codeInput' + n" v-model.trim.number="code[n-1]" @keydown="onkeydown(n)" @keyup="onkeyup(n)" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'et-verify-code',
+  name: 'EtVerifyCode',
   props: ["length"],
   data () {
     return {
@@ -25,27 +21,11 @@ export default {
     }
   },
   methods: {
-    sendCode () {
-      this.$emit('sendCode')
-    },
-    sendCodeStart () {
-      this.code = new Array(this.len)
-      this.$emit('sendCodeInput', '')
-      this.autoFocus()
-    },
-    sendCodeClear () {
-      this.code = new Array(this.len)
-    },
-    autoFocus () {
-      this.$refs.codeInput1[0].focus()
-    },
     onkeydown (n) {
       // eslint-disable-next-line
       // console.log(event)
       if (!this.keyCodes.includes(event.keyCode)) { // 拦截keyCodes数组外的键盘输入
         event.returnValue = false
-      // } else if (this.code[n - 1] !== '' && this.code[n - 1] !== undefined) {
-      //   this.$set(this.code, n - 1, '')
       } else if (event.keyCode === 8 && n > 1 && this.code[n - 1] === '') { // 删除键且this.code[n-1]为空
         this.$refs['codeInput' + (n - 1)][0].focus()
         event.returnValue = false
@@ -56,11 +36,9 @@ export default {
         this.$set(this.code, n - 1, event.key)
         if (n < this.len) this.$refs['codeInput' + (n + 1)][0].focus()
 
-        let codeStr = this.code.join('')
-        if (codeStr.length === this.len) this.$emit('sendCodeInput', codeStr)
+        this.$emit('sendCodeInput', this.code.join(''))
       } else if (event.keyCode === 8) { // 删除键
-        if (this.code.join('').length < this.len) this.$emit('sendCodeInput', '')
-        // if (n > 1) this.$refs['codeInput' + (n - 1)][0].focus()
+        this.$emit('sendCodeInput', this.code.join(''))
       } else if (event.keyCode === 13) { // enter键
         if (this.code.join('').length === this.len) this.$emit('goNext')
       }
@@ -70,5 +48,29 @@ export default {
 </script>
 
 <style lang="stylus">
+.vcWrap
+  input
+    width 40px
+    height 40px
+    line-height: 40px
+
+    -webkit-appearance: none;
+    // background-color: #fff;
+    // background-image: none;
+    // border: 1px solid #dcdfe6;
+    background-color: #f7f9fa;
+    border: 1px solid #f7f9fa;
+
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: inherit;
+    outline: 0;
+    padding: 0 14px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    border-radius: 4px;
+
+    margin-right 1em
+    &:last-child
+      margin-right 0
 
 </style>
