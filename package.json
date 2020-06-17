@@ -1,6 +1,6 @@
 {
   "name": "et-verify-code",
-  "version": "0.2.2",
+  "version": "0.2.3-0",
   "main": "lib/et-verify-code.umd.min.js",
   "author": "qyt-10@163.com | et",
   "description": "A vue component for verify code input",
