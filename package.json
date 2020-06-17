@@ -1,10 +1,15 @@
 {
   "name": "et-verify-code",
-  "version": "0.1.3",
+  "version": "0.2.0-0",
   "main": "lib/et-verify-code.umd.min.js",
   "author": "qyt-10@163.com | et",
   "description": "A vue component for verify code input",
-  "keywords": ["vue", "et", "verify-code", "et-verify-code"],
+  "keywords": [
+    "vue",
+    "et",
+    "verify-code",
+    "et-verify-code"
+  ],
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
