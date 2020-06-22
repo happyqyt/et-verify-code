@@ -2,7 +2,7 @@
 A vue component for verify code input.
 
 # show
-![show](https://i.ibb.co/NLWqpr8/et-test-Google-Chrome-2020-06-22-13-50-56.gif)
+![show](https://i.ibb.co/x76qPV3/bandicam-2020-06-22-15-00-00-810.gif)
 
 # install
 ```
