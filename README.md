@@ -14,7 +14,7 @@ import EtVerifyCode from 'et-verify-code'
 Vue.use(EtVerifyCode)
 // demo.js
 <template>
-  <et-verify-code @sendCodeInput="currentCode" @goNext="submitCode" />
+  <et-verify-code @sendCodeInput="currentCode" @goNext="submitCode" :length="4" /> <!-- 属性length：验证码位数，不传则默认为4位 -->
 </template>
 <script>
 export default {
@@ -39,7 +39,7 @@ export default {
 ```
 // demo.js
 <template>
-  <et-verify-code @sendCodeInput="currentCode" @goNext="submitCode" />
+  <et-verify-code @sendCodeInput="currentCode" @goNext="submitCode" :length="4" /> <!-- 属性length：验证码位数，不传则默认为4位 -->
 </template>
 <script>
 import EtVerifyCode from './components/et-verify-code.vue'
