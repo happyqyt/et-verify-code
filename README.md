@@ -1,6 +1,9 @@
 # et-verify-code
 A vue component for verify code input.
 
+# show
+![show](https://ibb.co/8jPw2bW)
+
 # install
 ```
 npm install et-verify-code -S
